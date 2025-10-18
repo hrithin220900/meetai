@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 
 export const DashboardUserButton = () => {
   const router = useRouter();
-  const isMobile = useSidebar();
+  const { isMobile } = useSidebar();
 
   const { data, isPending } = authClient.useSession();
 
@@ -65,24 +65,16 @@ export const DashboardUserButton = () => {
           <ChevronDownIcon className="size-4 shrink-0" />
         </DrawerTrigger>
         <DrawerContent>
-          <DrawerHeader className="flex flex-col items-start">
+          <DrawerHeader>
             <DrawerTitle>{data.user.name}</DrawerTitle>
             <DrawerDescription>{data.user.email}</DrawerDescription>
           </DrawerHeader>
-          <DrawerFooter className="flex flex-col items-center">
-            <Button
-              variant="outline"
-              onClick={() => {}}
-              className="size-4 text-black w-full py-4"
-            >
+          <DrawerFooter>
+            <Button variant="outline" onClick={() => {}}>
               <CreditCardIcon className="size-4" />
               Billing
             </Button>
-            <Button
-              variant="outline"
-              onClick={onLogout}
-              className="size-4 text-black w-full py-4"
-            >
+            <Button variant="outline" onClick={onLogout}>
               <LogOutIcon className="size-4" />
               Logout
             </Button>
